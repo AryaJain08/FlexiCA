@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive Email Layout</title>
+  <title>Responsive Multi-Layout</title>
   <style>
     * {
       box-sizing: border-box;
@@ -24,37 +23,47 @@
 
     header {
       grid-area: header;
-      background: #2efaef;
+      background: #05f2fa;
       padding: 1rem;
       text-align: center;
     }
 
     nav {
       grid-area: nav;
-      background: #5c1ff6;
+      background: #1407ff;
       padding: 1rem;
     }
 
     main {
       grid-area: main;
-      background: #f984f7;
+      background: #ea91e8;
       padding: 1rem;
     }
 
     aside {
       grid-area: aside;
-      background: #ec08bb;
+      background: #f503cd;
       padding: 1rem;
     }
 
     footer {
       grid-area: footer;
-      background: #ee0f0f;
+      background: #f65656;
       text-align: center;
       padding: 1rem;
     }
 
-    /* Responsive layout for mobile */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      body {
+        grid-template-areas:
+          "header header"
+          "nav main"
+          "nav aside"
+          "footer footer";
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 1fr 1fr auto;
+      }
+    }
     @media (max-width: 768px) {
       body {
         grid-template-areas:
@@ -64,6 +73,12 @@
           "aside"
           "footer";
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        height: 100vh;
+      }
+
+      header, nav, main, aside, footer {
+        overflow: auto;
       }
     }
   </style>
@@ -76,3 +91,4 @@
   <footer>Footer</footer>
 </body>
 </html>
+
